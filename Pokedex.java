@@ -36,7 +36,7 @@ public class Pokedex
 		typeT.setBounds(10, 635, 200, 60);
 		typeT.setFont(new Font("Consolas", Font.BOLD, 28));
 
-		JLabel idR = new JLabel(new String("" + pokeList.get(index).id), JLabel.CENTER);
+		JLabel idR = new JLabel(pokeList.get(index).id, JLabel.CENTER);
 		idR.setBounds(220, 495, 265, 60);
 		idR.setFont(new Font("Consolas", Font.BOLD, 28));
 
@@ -56,7 +56,7 @@ public class Pokedex
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					index = (index+pokeNum-1)%pokeNum;
-					idR.setText(new String("" + pokeList.get(index).id));
+					idR.setText(pokeList.get(index).id);
 					nameR.setText(pokeList.get(index).name);
 					typeR.setText(pokeList.get(index).type);
 					pic.setIcon(new ImageIcon("pic/" + pokeList.get(index).name + ".png"));
@@ -70,7 +70,7 @@ public class Pokedex
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					index = (index+1)%pokeNum;
-					idR.setText(new String("" + pokeList.get(index).id));
+					idR.setText(pokeList.get(index).id);
 					nameR.setText(pokeList.get(index).name);
 					typeR.setText(pokeList.get(index).type);
 					pic.setIcon(new ImageIcon("pic/" + pokeList.get(index).name + ".png"));
@@ -101,9 +101,9 @@ public class Pokedex
 		pokeNum = fstream.nextInt();
 
 		for (int i = 0; i < pokeNum; i++) {
-			PokemonData pokeTemp = new PokemonData("", "");
+			PokemonData pokeTemp = new PokemonData("", "", "");
 
-			pokeTemp.id = fstream.nextInt();
+			pokeTemp.id = fstream.next();
 			System.out.println(pokeTemp.id);
 
 			pokeTemp.name = fstream.next();
